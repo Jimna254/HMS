@@ -8,27 +8,48 @@
 
   <ItemGroup>
     <None Remove="Pages\About Us.razor.css" />
+    <None Remove="Pages\AdminAppointment.razor.css" />
+    <None Remove="Pages\AdminApproval.razor.css" />
+    <None Remove="Pages\AdminDoctors.razor.css" />
+    <None Remove="Pages\AdminHospitals.razor.css" />
+    <None Remove="Pages\Appointment.razor.css" />
+    <None Remove="Pages\DoctorsBooking.razor.css" />
+    <None Remove="Pages\DoctorsRegistration.razor.css" />
     <None Remove="Pages\Index.razor.css" />
     <None Remove="Pages\Login.razor.css" />
+    <None Remove="Pages\PatientHistory.razor.css" />
+    <None Remove="Pages\PatientInvoice.razor.css" />
+    <None Remove="Pages\PatientsAppointment.razor.css" />
+    <None Remove="Pages\PatientsBooking.razor.css" />
+    <None Remove="Pages\Registration.razor.css" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="Pages\About Us.razor.css" />
+    <Content Include="Pages\AdminApproval.razor.css" />
+    <Content Include="Pages\AdminDoctors.razor.css" />
+    <Content Include="Pages\AdminHospitals.razor.css" />
+    <Content Include="Pages\DoctorsBooking.razor.css" />
+    <Content Include="Pages\DoctorsRegistration.razor.css" />
     <Content Include="Pages\Index.razor.css" />
     <Content Include="Pages\Login.razor.css" />
+    <Content Include="Pages\PatientHistory.razor.css" />
+    <Content Include="Pages\PatientInvoice.razor.css" />
+    <Content Include="Pages\PatientsBooking.razor.css" />
+    <Content Include="Pages\PatientsAppointment.razor.css" />
+    <Content Include="Pages\Registration.razor.css" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Blazorise" Version="1.3.1" />
+    <PackageReference Include="Blazorise.Bootstrap" Version="1.3.1" />
+    <PackageReference Include="Blazorise.Charts" Version="1.3.1" />
+    <PackageReference Include="Blazorise.Icons.FontAwesome" Version="1.3.1" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.7" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.7" PrivateAssets="all" />
 	  <PackageReference Include="Blazored.LocalStorage" Version="4.4.0" />
 	  <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="7.0.11" />
 	  <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>

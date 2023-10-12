@@ -1,0 +1,59 @@
+﻿@page "/bookings"
+<div class="container">
+    <h3>Booking</h3>
+    <div class="tablecontainer">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Hospital</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Symptoms</th>
+                        <th scope="col">Doctor Charges</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>St. Mary's Hospital</td>
+                        <td>2023-10-15</td>
+                        <td>10:00 AM</td>
+                        <td>Fever, cough, headache</td>
+                        <td>$150</td>
+                        <td>
+                            <button type="button" class="btn btn-primary">Edit</button>
+                            <button type="button" class="btn btn-warning">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>General Hospital</td>
+                        <td>2023-10-16</td>
+                        <td>2:30 PM</td>
+                        <td>Back pain, fatigue, dizziness</td>
+                        <td>$200</td>
+                        <td>
+                            <button type="button" class="btn btn-primary">Edit</button>
+                            <button type="button" class="btn btn-warning">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>City Hospital</td>
+                        <td>2023-10-17</td>
+                        <td>9:15 AM</td>
+                        <td>Sore throat, runny nose, fever</td>
+                        <td>$100</td>
+                        <td>
+                            <button type="button" class="btn btn-primary">Edit</button>
+                            <button type="button" class="btn btn-warning">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@code {
+
+}

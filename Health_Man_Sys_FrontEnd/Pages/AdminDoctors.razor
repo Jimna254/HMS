@@ -1,0 +1,70 @@
+﻿@page "/doctors-table"
+<div class="container">
+
+<h3>Doctors</h3>
+<div class="table-responsive">
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Hospital</th>
+            <th>Phone Number</th>
+            <th>Specialization</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var doctor in doctors)
+        {
+            <tr>
+               <td>@doctor.Name</td>
+               <td>@doctor.Email</td>
+               <td>@doctor.Hospital</td>
+               <td>@doctor.PhoneNumber</td>
+               <td>@doctor.Specialization</td>
+               <td>@doctor.Status</td>
+                <td>
+                    <button class="btn btn-primary" @onclick="() => EditPatient(doctor)">Edit</button>
+                    <button class="btn btn-danger" @onclick="() => DeletePatient(doctor)">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+    </div>
+</div>
+@code {
+    private List<Doctor> doctors = new List<Doctor>
+    {
+        new Doctor { Name = "John Doe", Email = "johndoe@example.com", Hospital = "Hospital ABC", PhoneNumber = "(123) 456-7890", Specialization = "Ophalmology", Status = "Active" },
+        new Doctor { Name = "John Doe", Email = "johndoe@example.com", Hospital = "Hospital ABC", PhoneNumber = "(123) 456-7890", Specialization = "Ophalmology", Status = "Active" },
+        new Doctor { Name = "John Doe", Email = "johndoe@example.com", Hospital = "Hospital ABC", PhoneNumber = "(123) 456-7890", Specialization = "Ophalmology", Status = "Active" },
+
+
+    };
+
+    private class Doctor
+    {
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string Hospital { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Specialization { get; set; } = "Ophalmology";
+        public string Status { get; set; }
+    }
+
+    private void EditPatient(Doctor doctor)
+    {
+     
+    }
+
+    private void DeletePatient(Doctor doctor)
+    {
+       
+    }
+}
+
+
+

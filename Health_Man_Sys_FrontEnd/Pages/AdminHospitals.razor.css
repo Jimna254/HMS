@@ -1,0 +1,16 @@
+﻿.btn-primary{
+	background-color:#4D496E;
+	border-color: #4D496E; 
+}
+.btn-danger {
+	background-color: #6B5A39;
+	color: #fff;
+	border-color: #6B5A39;
+}
+
+.btn-success {
+	background-color: #395D6B;
+}
+@*h3 {
+  border-bottom: 5px solid #395D6B;
+}*@

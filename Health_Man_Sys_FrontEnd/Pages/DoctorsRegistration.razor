@@ -1,0 +1,70 @@
+﻿@page "/doctorsreg"
+<div style="display:flex;  justify-content:center;">
+    <h3>Apply Here to Work With Us</h3>
+</div>
+
+<div class="main-container mt-5">
+    <EditForm Model="doctor" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <InputText @bind-Value="doctor.FirstName" id="firstName" class="form-control" />
+            <ValidationMessage For="@(() => doctor.FirstName)" />
+        </div>
+
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <InputText @bind-Value="doctor.LastName" id="lastName" class="form-control" />
+            <ValidationMessage For="@(() => doctor.LastName)" />
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <InputText @bind-Value="doctor.Email" id="email" class="form-control" />
+            <ValidationMessage For="@(() => doctor.Email)" />
+        </div>
+
+        <div class="form-group">
+            <label for="specialization">Specialization</label>
+            <InputText @bind-Value="doctor.Specialization" id="specialization" class="form-control" />
+            <ValidationMessage For="@(() => doctor.Specialization)" />
+        </div>
+
+        <div class="form-group mt-3">
+            <label for="license">License (PDF file)</label>
+            <InputFile OnChange="HandleFileChange" id="license" accept=".pdf" />
+            <ValidationMessage For="@(() => licenseFile)" />
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-5">Submit</button>
+    </EditForm>
+</div>
+
+
+@code {
+    private DoctorModel doctor = new DoctorModel();
+    private IBrowserFile licenseFile;
+
+    private async Task HandleValidSubmit()
+    {
+        // Handle the form submission here, e.g., save data and file
+        // You can access the entered data via the 'doctor' object
+        // and the uploaded file via the 'licenseFile' object
+    }
+
+    private void HandleFileChange(InputFileChangeEventArgs e)
+    {
+        licenseFile = e.File;
+    }
+
+    private class DoctorModel
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public string Specialization { get; set; }
+        
+    }
+}
+

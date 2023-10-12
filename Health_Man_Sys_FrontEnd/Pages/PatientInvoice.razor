@@ -1,0 +1,75 @@
+﻿@page "/invoice"
+
+<div class="container">
+    <h3>Invoices</h3>
+
+    @if (invoices.Count > 0)
+    {
+        @foreach (var invoice in invoices)
+        {
+            <div class="card mb-3" style="background-color:floralwhite;">
+                <div class="card-header">Invoice</div>
+                <div class="card-body">
+                    <h5 class="card-title">Doctor: @invoice.DoctorName</h5>
+                    <p class="card-text">Illness: @invoice.Illness</p>
+                    <p class="card-text">Prescription: @invoice.Prescription</p>
+                    <p class="card-text">Charges: @invoice.Charges.ToString("C")</p>
+                    <p class="card-text">Hospital: @invoice.HospitalName</p>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-success" @onclick="() => PayInvoice(invoice)" style="background-color:#395D6B;">Pay</button>
+                    <button class="btn btn-danger" @onclick="() => CancelInvoice(invoice)" style="background-color:#6B5A39; border-color:#6B5A39;">Cancel</button>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <p>No invoices available.</p>
+    }
+</div>
+
+@code {
+    private List<InvoiceModel> invoices = new List<InvoiceModel>
+    {
+        new InvoiceModel
+        {
+            DoctorName = "Dr. John Doe",
+            Illness = "Headache",
+            Prescription = "Take pain reliever",
+            Charges = 75.00m,
+            HospitalName = "City Hospital"
+        },
+        new InvoiceModel
+        {
+            DoctorName = "Dr. John Doe",
+            Illness = "Fever",
+            Prescription = "Take rest",
+            Charges = 100.00m,
+            HospitalName = "General Hospital"
+        }
+        // Add more invoice records as needed
+    };
+
+    private void PayInvoice(InvoiceModel invoice)
+    {
+        // Implement logic to mark the invoice as paid and remove it from the list
+        invoices.Remove(invoice);
+    }
+
+    private void CancelInvoice(InvoiceModel invoice)
+    {
+        // Implement logic to cancel the invoice and remove it from the list
+        invoices.Remove(invoice);
+    }
+
+    private class InvoiceModel
+    {
+        public string DoctorName { get; set; }
+        public string Illness { get; set; }
+        public string Prescription { get; set; }
+        public decimal Charges { get; set; }
+        public string HospitalName { get; set; }
+    }
+}
+

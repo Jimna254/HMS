@@ -1,0 +1,118 @@
+﻿@page "/hospital-table"
+@using System.Collections.Generic
+
+<div class="container">
+    <h3>Hospitals</h3>
+    <div class="row">
+        <div class="col-md-6">
+            <!-- Add Hospital Button -->
+            <button class="btn btn-primary" @onclick="ShowAddHospitalForm">Add Hospital</button>
+
+            <!-- Hospital Table -->
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th>Service Number</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var hospital in hospitals)
+                        {
+                            <tr>
+                                <td>@hospital.Name</td>
+                                <td>@hospital.Location</td>
+                                <td>@hospital.ServiceNumber</td>
+                                <td>
+                                    <button class="btn btn-success" @onclick="() => EditHospital(hospital)">Edit</button>
+                                    <button class="btn btn-danger" @onclick="() => DeleteHospital(hospital)">Delete</button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-6">
+            @if (showAddHospitalForm)
+            {
+                <!-- Add/Edit Hospital Form -->
+                <EditForm Model="hospitalModel" OnValidSubmit="SaveHospital">
+                    <h3>@(showAddHospitalForm ? "Add Hospital" : "Edit Hospital")</h3> 
+                    <div class="form-group">
+                        <label for="Name">Name</label>
+                        <InputText id="Name" class="form-control" @bind-Value="hospitalModel.Name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Location">Location</label>
+                        <InputText id="Location" class="form-control" @bind-Value="hospitalModel.Location" />
+                    </div>
+                    <div class="form-group">
+                        <label for="ServiceNumber">Service Number</label>
+                        <InputText id="ServiceNumber" class="form-control" @bind-Value="hospitalModel.ServiceNumber" />
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-2">Save</button>
+                </EditForm>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    private List<Hospital> hospitals = new List<Hospital>
+    {
+        new Hospital { Name = "Hospital ABC", Location = "City A", ServiceNumber = "SN123" },
+        new Hospital { Name = "Hospital XYZ", Location = "City B", ServiceNumber = "SN456" },
+    };
+
+    private Hospital hospitalModel = new Hospital();
+
+    private bool showAddHospitalForm = false;
+
+    private void ShowAddHospitalForm()
+    {
+        hospitalModel = new Hospital(); // Clear the form
+        showAddHospitalForm = true;
+    }
+
+    private void SaveHospital()
+    {
+        if (showAddHospitalForm)
+        {
+            hospitals.Add(hospitalModel); // Add a new hospital
+        }
+        else
+        {
+            // Implement editing logic to update the existing record
+            var existingHospital = hospitals.FirstOrDefault(h => h.Name == hospitalModel.Name);
+            if (existingHospital != null)
+            {
+                existingHospital.Location = hospitalModel.Location;
+                existingHospital.ServiceNumber = hospitalModel.ServiceNumber;
+            }
+        }
+
+        showAddHospitalForm = false; // Hide the form
+    }
+
+    private void EditHospital(Hospital hospital)
+    {
+        hospitalModel = hospital;
+        showAddHospitalForm = true;
+    }
+
+    private void DeleteHospital(Hospital hospital)
+    {
+        hospitals.Remove(hospital);
+    }
+
+    private class Hospital
+    {
+        public string Name { get; set; }
+        public string Location { get; set; }
+        public string ServiceNumber { get; set; }
+    }
+}

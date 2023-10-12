@@ -1,10 +1,11 @@
+
 .navbar-toggler {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
 .top-row {
     height: 3.5rem;
-    background-color: rgba(0,0,0,0.4);
+    background-color: #395D6B;
 }
 
 .navbar-brand {
@@ -32,23 +33,43 @@
     }
 
     .nav-item ::deep a {
-        color: #d7d7d7;
-        border-radius: 4px;
+        color: #395D6B;
+        border-radius: 29px;
         height: 3rem;
         display: flex;
         align-items: center;
         line-height: 3rem;
     }
 
-.nav-item ::deep a.active {
-    background-color: rgba(255,255,255,0.25);
-    color: white;
+        .nav-item ::deep a.active {
+            background-color: #395D6B;
+            color: white;
+            border-radius: 29px;
+            border-bottom: 3px solid;
+        }
+
+        .nav-item ::deep a:hover {
+            background-color: #395D6B;
+            color: #fff;
+            border-radius: 29px;
+        }
+
+.btn-danger {
+    background-color: #6B5A39;
+    border-color: #6B5A39;
 }
 
-.nav-item ::deep a:hover {
-    background-color: rgba(255,255,255,0.1);
-    color: white;
+
+ul {
+    list-style: none;
 }
+
+/*ion-icon{
+    font-size:1em;
+    width: 1em;
+    text-align:center;
+    box-sizing:content-box;
+}*/
 
 @media (min-width: 641px) {
     .navbar-toggler {
@@ -65,4 +86,5 @@
         height: calc(100vh - 3.5rem);
         overflow-y: auto;
     }
+
 }

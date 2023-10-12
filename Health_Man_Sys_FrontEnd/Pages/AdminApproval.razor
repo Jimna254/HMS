@@ -1,0 +1,97 @@
+﻿@page "/applications"
+
+<div class="container">
+    <div style="display:flex; justify-content:center;">
+        <h3>Doctor's Applications</h3>
+    </div>
+
+    <div class="main-container mt-5">
+        @if (doctorApplications.Count > 0)
+        {
+            <div class="row">
+                @foreach (var application in doctorApplications)
+                {
+                    <div class="col-md-4 mb-4">
+                        <div class="card" style="background-color:floralwhite;">
+                            <div class="card-body">
+                                <h5 class="card-title">@application.FirstName @application.LastName</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">@application.Specialization</h6>
+                                <p class="card-text">Email: @application.Email</p>
+                                <p class="card-text">License: @application.LicenseFileName</p>
+                                <p class="card-text">Status: @application.Status</p>
+                                <button class="btn btn-success" @onclick="() => ApproveDoctor(application)" style="background-color: #395D6B;">Approve</button>
+                                <button class="btn btn-danger" @onclick="() => RejectDoctor(application)" style="background-color: #6B5A39; border-color: #6B5A39;">Reject</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <p>No doctor applications available.</p>
+        }
+    </div>
+</div>
+
+@code {
+    private List<DoctorApplicationModel> doctorApplications = new List<DoctorApplicationModel>();
+
+    // Simulated data for doctor applications
+    private void LoadDoctorApplications()
+    {
+        doctorApplications = new List<DoctorApplicationModel>
+        {
+            new DoctorApplicationModel
+            {
+                FirstName = "John",
+                LastName = "Doe",
+                Email = "johndoe@example.com",
+                Specialization = "Dentist",
+                LicenseFileName = "license.pdf",
+                Status = "Pending"
+            },
+            new DoctorApplicationModel
+            {
+                FirstName = "Jim",
+                LastName = "Kariuki",
+                Email = "james@example.com",
+                Specialization = "Opthamology",
+                LicenseFileName = "license.pdf",
+                Status = "Pending"
+            }
+            // Add more doctor applications as needed
+        };
+    }
+
+    private void ApproveDoctor(DoctorApplicationModel application)
+    {
+        // Implement approval logic here
+        application.Status = "Approved";
+        // Remove the application from the list
+        doctorApplications.Remove(application);
+    }
+
+    private void RejectDoctor(DoctorApplicationModel application)
+    {
+        // Implement rejection logic here
+        application.Status = "Rejected";
+        // Remove the application from the list
+        doctorApplications.Remove(application);
+    }
+
+    protected override void OnInitialized()
+    {
+        LoadDoctorApplications();
+    }
+
+    private class DoctorApplicationModel
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public string Specialization { get; set; }
+        public string LicenseFileName { get; set; }
+        public string Status { get; set; }
+    }
+}

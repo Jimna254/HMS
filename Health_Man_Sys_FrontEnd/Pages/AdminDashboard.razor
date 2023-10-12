@@ -1,0 +1,61 @@
+﻿@*@page "/dashboard"
+
+
+<h1>Dashboard</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Patients Served</h3>
+            <BarChart @ref="patientsChart" Data="patientChartData" Options="chartOptions" Width="400" Height="300" />
+        </div>
+        <div class="col-md-6">
+            <h3>Amount Raised</h3>
+            <PieChart @ref="amountRaisedChart" Data="amountRaisedChartData" Options="chartOptions" Width="400" Height="300" />
+        </div>
+    </div>
+</div>
+
+@code {
+    private BarChart patientsChart;
+    private PieChart amountRaisedChart;
+
+    private ChartOptions chartOptions = new ChartOptions
+        {
+            Responsive = true,
+            MaintainAspectRatio = false
+        };
+
+    private ChartData patientChartData = new ChartData
+        {
+            Labels = new[] { "January", "February", "March", "April", "May", "June", "July" },
+            Datasets = new List<ChartDataset<int>>
+        {
+            new ChartDataset<int>
+            {
+                Label = "Patients Served",
+                BackgroundColor = new[] { "rgba(75, 192, 192, 0.2)" },
+                BorderColor = new[] { "rgba(75, 192, 192, 1)" },
+                BorderWidth = 1,
+                Data = new List<int> { 65, 59, 80, 81, 56, 55, 40 }
+            }
+        }
+        };
+
+    private ChartData amountRaisedChartData = new ChartData
+        {
+            Labels = new[] { "Donations", "Fees", "Insurance" },
+            Datasets = new List<ChartDataset<decimal>>
+        {
+            new ChartDataset<decimal>
+            {
+                Label = "Amount Raised",
+                BackgroundColor = new[] { "rgba(255, 99, 132, 0.2)", "rgba(54, 162, 235, 0.2)", "rgba(255, 205, 86, 0.2)" },
+                BorderColor = new[] { "rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)", "rgba(255, 205, 86, 1)" },
+                BorderWidth = 1,
+                Data = new List<decimal> { 2000, 1500, 2500 }
+            }
+        }
+        };
+}
+*@

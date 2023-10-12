@@ -1,0 +1,58 @@
+﻿@page "/AIchat"
+<div class="container">
+<h1>AI Assistant Chat</h1>
+
+<div class="chat-container">
+    <div id="chat-box" class="chat-box">
+        @foreach (var message in chatMessages)
+        {
+            <p>@message</p>
+        }
+    </div>
+    <EditForm Model="userInput" OnValidSubmit="SendMessage">
+        <div class="input-group mt-3">
+            <InputTextArea @bind-Value="userInput.Message" class="form-control" placeholder="Enter symptoms..." rows="4"></InputTextArea>
+            
+        </div>
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-primary mt-3" style="background-color:#395D6B">Send</button>
+            </div>
+    </EditForm>
+
+</div>
+</div>
+@code {
+    private List<string> chatMessages = new List<string>();
+    private UserMessage userInput = new UserMessage();
+
+    private class UserMessage
+    {
+        public string Message { get; set; }
+    }
+
+    private string SimulateResponse(string userMessage)
+    {
+        // Simulated response from the Language Model
+        string[] illnesses = { "Flu", "Common Cold", "Allergies", "COVID-19", "Stomach Flu" };
+        string randomIllness = illnesses[new Random().Next(illnesses.Length)];
+        return $"Based on the symptoms you provided, it could be {randomIllness}.";
+    }
+
+    private void SendMessage()
+    {
+        string userMessage = userInput.Message.Trim();
+        if (!string.IsNullOrEmpty(userMessage))
+        {
+            // Display the user's message
+            chatMessages.Add($"You: {userMessage}");
+
+            // Simulate the AI's response
+            string aiResponse = SimulateResponse(userMessage);
+            chatMessages.Add($"AI Doctor: {aiResponse}");
+
+            // Clear the input field
+            userInput.Message = "";
+        }
+    }
+}
+

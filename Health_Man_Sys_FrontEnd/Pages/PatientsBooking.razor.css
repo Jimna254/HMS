@@ -1,0 +1,17 @@
+﻿.tablecontainer {
+	/*display:flex;
+	justify-content:center;
+	align-items:center;
+	align-content:center;
+	*/
+	margin-left:20px;
+}
+
+.btn-primary{
+	background-color:#395D6B;
+}
+.btn-warning{
+	background-color:#6B5A39;
+	color:#fff;
+	border-color:#6B5A39;
+}

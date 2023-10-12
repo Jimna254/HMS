@@ -1,7 +1,55 @@
-﻿@page "/Registration"
-@inject HttpClient Http
+﻿@page "/register"
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h3>Register With Us</h3>
+            <EditForm Model="@registerDTO" OnValidSubmit="@HandleValidSubmit">
+                <DataAnnotationsValidator />
+                <ValidationSummary/>
 
-<PageTitle>Weather forecast</PageTitle>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <InputText id="email" class="form-control" @bind-Value="@registerDTO.Email" />
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <InputText id="password" class="form-control" type="password" @bind-Value="@registerDTO.Password" />
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <InputText id="name" class="form-control" @bind-Value="@registerDTO.Name" />
+                </div>
+
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number</label>
+                    <InputText id="phoneNumber" class="form-control" @bind-Value="@registerDTO.PhoneNumber" />
+                </div>
+
+                <div class="form-group">
+                    <a href="login">Already have an account? Click here to Login</a>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </EditForm>
+        </div>
+    </div>
+</div>
 
 
+
+@code{
+    private RegisterDTO registerDTO = new RegisterDTO();
+    private async Task HandleValidSubmit()
+    {
+        registerDTO.Email = "";
+        registerDTO.PhoneNumber = "";
+        registerDTO.Name = "";
+        registerDTO.Password = "";
+
+    }
+}
 
