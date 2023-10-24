@@ -1,9 +1,44 @@
-﻿.form-container{
+﻿/*.form-container{
 	display: flex;
-	
-	/*align-content:center;*/
 	
 	justify-content:center;
 	align-items: center;
 	flex-direction: column;
-}
+}*/
+
+ .form-group {
+        margin-bottom: 15px; /* Add spacing below each form group */
+    }
+
+    .form-container {
+        width: 70%; 
+        margin: 0 auto; 
+
+
+    /* Customize the select element */
+    #hospitalselect {
+        border-color: #395D6B;; 
+    }
+
+    /* Customize the select element when hovering over options */
+    #hospitalselect:hover {
+        border-color: #395D6B; 
+        
+    }
+
+    /* Customize the select element when it's active */
+    #hospitalselect:active {
+        border-color: #395D6B 
+    }
+
+    /* Customize the color of the options when hovering */
+    #hospitalselect option:hover {
+        background-color: #395D6B; 
+        color: #fff; 
+    }
+
+    /* Customize the color of the selected option */
+   /* #hospitalselect option:checked {
+        background-color: #395D6B; 
+        color: #fff; 
+    }*/
